@@ -3,10 +3,7 @@ name: Esegui Scraper
 # Quando deve partire?
 on:
   workflow_dispatch: # Permette di avviarlo manualmente con un pulsante da GitHub
-  schedule:
-    - cron: '30 11 * * *'
-    - cron: '0 19 * * *'
-
+  
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -31,7 +28,6 @@ jobs:
       - name: Avvia l'estrazione dati
         env:
           PYTHONIOENCODING: 'utf-8' # Previene errori di decodifica sui testi
-          TZ: 'Europe/Rome'
         run: |
           python RSS_Scraper.py
 
