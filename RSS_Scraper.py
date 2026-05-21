@@ -1,5 +1,4 @@
 import csv
-import os
 from datetime import datetime
 import feedparser
 
@@ -10,7 +9,7 @@ SOURCES = {
     'Il Messaggero' : 'https://www.ilmessaggero.it/rss/home.xml'
 }
 
-OUTPUT_FILE = "titoli_giornali.csv"
+OUTPUT_FILE = f"dataset_{datetime.now().strftime('%Y-%m-%d')}.csv"
 
 
 def download_titles():
@@ -29,11 +28,9 @@ def download_titles():
             print(f"Error while downloading from {newspaper}: {e}")
 
 
-    new_file = not os.path.exists(OUTPUT_FILE)
-    with open(OUTPUT_FILE, mode="a", encoding="utf-8", newline="") as file:
+    with open(OUTPUT_FILE, mode="w", encoding="utf-8", newline="") as file:
         writer = csv.writer(file)
-        if new_file:
-            writer.writerow(["Timestamp", "Newspaper", "Title"])
+        writer.writerow(["Timestamp", "Newspaper", "Title"])
         writer.writerows(new_data)
 
     print(f"[{current_datetime}] Collection completed!")
@@ -41,3 +38,4 @@ def download_titles():
 
 if __name__ == "__main__":
     download_titles()
+
