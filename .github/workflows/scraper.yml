@@ -33,5 +33,5 @@ jobs:
       - name: Salva il dataset generato
         uses: actions/upload-artifact@v4
         with:
-          name: dataset-estratti
+          name: dataset_giornata
           path: "*.csv"
