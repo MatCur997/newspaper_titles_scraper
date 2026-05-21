@@ -4,7 +4,8 @@ name: Esegui Scraper
 on:
   workflow_dispatch: # Permette di avviarlo manualmente con un pulsante da GitHub
   schedule:
-    - cron: '0 19 * * *' # Esegue in automatico ogni giorno alle 19:00 UTC
+    - cron: '30 11 * * *'
+    - cron: '0 19 * * *'
 
 jobs:
   run-scraper:
