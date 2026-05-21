@@ -9,7 +9,7 @@ SOURCES = {
     'Il Messaggero' : 'https://www.ilmessaggero.it/rss/home.xml'
 }
 
-OUTPUT_FILE = f"dataset_{datetime.now().strftime('%Y-%m-%d')}.csv"
+OUTPUT_FILE = f"dataset_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv"
 
 
 def download_titles():
