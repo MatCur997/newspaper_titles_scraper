@@ -10,7 +10,7 @@ SOURCES = {
     'Il Messaggero' : 'https://www.ilmessaggero.it/rss/home.xml'
 }
 
-OUTPUT_FILE = "titoli_giornali_mese.csv"
+OUTPUT_FILE = "titoli_giornali.csv"
 
 
 def download_titles():
