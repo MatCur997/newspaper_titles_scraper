@@ -1,0 +1,37 @@
+name: Esegui Scraper
+
+# Quando deve partire?
+on:
+  workflow_dispatch: # Permette di avviarlo manualmente con un pulsante da GitHub
+  schedule:
+    - cron: '0 19 * * *' # Esegue in automatico ogni giorno alle 19:00 UTC
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest # Usa l'ultima versione di Linux disponibile
+    
+    steps:
+      - name: Clona il codice dal repository
+        uses: actions/checkout@v4
+
+      - name: Configura Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # Puoi cambiare la versione se necessario
+
+      - name: Installa le librerie
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Avvia l'estrazione dati
+        env:
+          PYTHONIOENCODING: 'utf-8' # Previene errori di decodifica sui testi
+        run: |
+          python RSS_Scraper.py
+
+      - name: Salva il dataset generato
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataset-estratti
+          path: "*.csv"
