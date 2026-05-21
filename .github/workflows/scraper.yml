@@ -27,6 +27,7 @@ jobs:
       - name: Avvia l'estrazione dati
         env:
           PYTHONIOENCODING: 'utf-8' # Previene errori di decodifica sui testi
+          TZ: 'Europe/Rome'
         run: |
           python RSS_Scraper.py
 
